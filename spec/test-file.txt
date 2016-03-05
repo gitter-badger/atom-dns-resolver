@@ -1,0 +1,7 @@
+www.github.com
+www.google.com
+www.microsoft.com
+localhost
+www.richard-slater.co.uk
+www.amido.com
+www.invaliddomain.is.invalid

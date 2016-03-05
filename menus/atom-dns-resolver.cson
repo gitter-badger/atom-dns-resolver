@@ -1,0 +1,22 @@
+# See https://atom.io/docs/latest/hacking-atom-package-word-count#menus for more details
+'context-menu':
+  'atom-text-editor': [
+    {
+      'label': 'Resolve DNS'
+      'command': 'atom-dns-resolver:resolve'
+    }
+  ]
+'menu': [
+  {
+    'label': 'Packages'
+    'submenu': [
+      'label': 'DNS Resolver'
+      'submenu': [
+        {
+          'label': 'Resolve DNS'
+          'command': 'atom-dns-resolver:resolve'
+        }
+      ]
+    ]
+  }
+]

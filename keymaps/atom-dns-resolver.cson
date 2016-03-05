@@ -1,0 +1,2 @@
+'atom-text-editor':
+  'alt-shift-r': 'atom-dns-resolver:resolve'
