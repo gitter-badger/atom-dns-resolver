@@ -9,7 +9,7 @@
   "activationCommands": {
     "atom-workspace": "atom-dns-resolver:resolve"
   },
-  "repository": "https://github.com/atom/atom-dns-resolver",
+  "repository": "https://github.com/RichardSlater/atom-dns-resolver",
   "license": "Apache2",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
