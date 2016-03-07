@@ -28,8 +28,12 @@ module.exports = class Logger
       @messages.clear()
     @messages.attach()
   logCore: (message, textClass, range) ->
-    line = range.start.row + 1
-    character = range.start.column + 1
+    if range
+      line = range.start.row + 1
+      character = range.start.column + 1
+    else
+      line = 0
+      character = 0
 
     @messages.add new LineMessageView
       line: line

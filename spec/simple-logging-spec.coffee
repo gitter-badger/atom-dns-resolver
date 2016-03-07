@@ -17,11 +17,39 @@
 Logger = require '../lib/simple-logging'
 
 describe "SimpleLogging", ->
-  [panel] = []
+  [panel, logger] = []
+  beforeEach ->
+    logger = new Logger()
+    logger.init('DNS Resolver')
+    panel = atom.workspace.getBottomPanels()[0]
   it "attaches to the atom viewport when init is called", ->
-    waitsFor "new panel to be added", ->
-      logger = new Logger()
-      logger.init('DNS Resolver')
-      panel = atom.workspace.getBottomPanels()[0]
     runs ->
       expect(panel.item.title).toBe('DNS Resolver')
+  it "adds an info line when informational message added", ->
+    waitsFor ->
+      panel
+    runs ->
+      logger.logInfo 'sample message', null
+      expect(panel.item.messages[0].message).toBe('sample message')
+      expect(panel.item.messages[0].className).toBe('text-info')
+  it "adds an warning line when warning message added", ->
+    waitsFor ->
+      panel
+    runs ->
+      logger.logWarn 'sample message', null
+      expect(panel.item.messages[0].message).toBe('sample message')
+      expect(panel.item.messages[0].className).toBe('text-warning')
+  it "adds an error line when error message added", ->
+    waitsFor ->
+      panel
+    runs ->
+      logger.logError 'sample message', null
+      expect(panel.item.messages[0].message).toBe('sample message')
+      expect(panel.item.messages[0].className).toBe('text-error')
+  it "adds an success line when success message added", ->
+    waitsFor ->
+      panel
+    runs ->
+      logger.logSuccess 'sample message', null
+      expect(panel.item.messages[0].message).toBe('sample message')
+      expect(panel.item.messages[0].className).toBe('text-success')
