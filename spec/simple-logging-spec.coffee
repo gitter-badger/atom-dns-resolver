@@ -23,6 +23,8 @@ describe "SimpleLogging", ->
     logger.init('DNS Resolver')
     panel = atom.workspace.getBottomPanels()[0]
   it "attaches to the atom viewport when init is called", ->
+    waitsFor ->
+      panel
     runs ->
       expect(panel.item.title).toBe('DNS Resolver')
   it "adds an info line when informational message added", ->

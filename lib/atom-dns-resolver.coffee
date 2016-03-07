@@ -14,20 +14,15 @@
 
 "use strict"
 
-AtomDnsResolverView = require './atom-dns-resolver-view'
 Logger = require './simple-logging'
 {CompositeDisposable} = require 'atom'
 
 module.exports = AtomDnsResolver =
-  atomDnsResolverView: null
   modalPanel: null
   subscriptions: null
   logger: null
 
   activate: (state) ->
-    @atomDnsResolverView = new AtomDnsResolverView(state.atomDnsResolverViewState)
-    @modalPanel = atom.workspace.addModalPanel(item: @atomDnsResolverView.getElement(), visible: false)
-
     @subscriptions = new CompositeDisposable
     @subscriptions.add atom.commands.add 'atom-text-editor', 'atom-dns-resolver:resolve': => @resolve()
 
@@ -35,10 +30,9 @@ module.exports = AtomDnsResolver =
   deactivate: ->
     @modalPanel.destroy()
     @subscriptions.dispose()
-    @atomDnsResolverView.destroy()
     @logger.destroy()
   serialize: ->
-    atomDnsResolverViewState: @atomDnsResolverView.serialize()
+
   resolve: ->
     if editor = atom.workspace.getActiveTextEditor()
       @logger.init('DNS Resolver');
