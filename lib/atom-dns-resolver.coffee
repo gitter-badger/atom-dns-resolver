@@ -21,12 +21,22 @@ module.exports = AtomDnsResolver =
   modalPanel: null
   subscriptions: null
   logger: null
+  dns: null
 
-  activate: (state) ->
+  activate: (state, explictLogger, explicitDns) ->
     @subscriptions = new CompositeDisposable
     @subscriptions.add atom.commands.add 'atom-text-editor', 'atom-dns-resolver:resolve': => @resolve()
 
-    @logger = new Logger()
+    if explictLogger
+      @logger = explictLogger
+    else
+      @logger = new Logger()
+
+    if explicitDns
+      @dns = explicitDns
+    else
+      @dns = require('dns')
+
   deactivate: ->
     @modalPanel.destroy()
     @subscriptions.dispose()
@@ -47,6 +57,7 @@ module.exports = AtomDnsResolver =
 
       for range in ranges
         log = @logger
+        dns = @dns
         do (range) ->
           selection = editor.getTextInBufferRange(range)
 
@@ -55,7 +66,6 @@ module.exports = AtomDnsResolver =
           else
             log.logInfo 'Attempting to resolve ' + selection, range
 
-            dns = require('dns')
             dns.lookup selection,  (error, address, family) ->
               if error
                 log.logError 'Unable to resolve ' + selection + ': ' + error, range
