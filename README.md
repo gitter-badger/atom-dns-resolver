@@ -1,5 +1,7 @@
 # Atom DNS Resolver
 
+![TravisCI](https://travis-ci.org/RichardSlater/atom-dns-resolver.svg?branch=master) [![AppVeyor](https://ci.appveyor.com/api/projects/status/m7fgyausf7bo2waf?svg=true)](https://ci.appveyor.com/project/richard-slater/atom-dns-resolver) [![Issue Count](https://codeclimate.com/github/RichardSlater/atom-dns-resolver/badges/issue_count.svg)](https://codeclimate.com/github/RichardSlater/atom-dns-resolver)
+
 Allows any selected domain name, whether fully qualified or local to be resolved to an IPv4 or IPv6 address.
 
 ![DNS Resolver Screenshot](assets/screenshot.gif)
