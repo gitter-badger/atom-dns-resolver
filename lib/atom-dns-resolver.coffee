@@ -22,29 +22,24 @@ module.exports = AtomDnsResolver =
   subscriptions: null
   logger: null
   dns: null
+  workspace: null
 
-  activate: (state, explictLogger, explicitDns) ->
+  activate: (state, explictLogger, explicitDns, explicitWorkspace) ->
     @subscriptions = new CompositeDisposable
     @subscriptions.add atom.commands.add 'atom-text-editor', 'atom-dns-resolver:resolve': => @resolve()
 
-    if explictLogger
-      @logger = explictLogger
-    else
-      @logger = new Logger()
-
-    if explicitDns
-      @dns = explicitDns
-    else
-      @dns = require('dns')
-
+    @logger = explictLogger ? new Logger()
+    @dns = explicitDns ? require('dns')
+    @workspace = explicitWorkspace ? atom.workspace
   deactivate: ->
     @modalPanel.destroy()
     @subscriptions.dispose()
     @logger.destroy()
+    @dns.destroy()
   serialize: ->
 
   resolve: ->
-    if editor = atom.workspace.getActiveTextEditor()
+    if editor = @workspace.getActiveTextEditor()
       @logger.init('DNS Resolver');
       selectedText = editor.getSelectedText()
 
@@ -71,7 +66,7 @@ module.exports = AtomDnsResolver =
                 log.logError 'Unable to resolve ' + selection + ': ' + error, range
               else
                 if selection == address
-                  log.logWarn 'The selected text resolved to the value of the selection, this probably means an IP Address is selected', range
+                  log.logWarn 'The selected text resolved to the value of the selection, this probably means an IP address is selected', range
                 else
-                  log.logSuccess 'Successfully Resolved ' + selection + ' to ' + address + ' (IPv' + family + ')', range
+                  log.logSuccess 'Successfully resolved ' + selection + ' to ' + address + ' (IPv' + family + ')', range
                   editor.setTextInBufferRange(range, address)
