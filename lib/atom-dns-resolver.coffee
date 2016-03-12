@@ -64,13 +64,13 @@ module.exports = AtomDnsResolver =
 
             dns.lookup selection,  (error, address, family) ->
               if error
-                log.logError 'Unable to resolve #{selection}: #{error}', range
+                log.logError "Unable to resolve #{selection}: #{error}", range
               else
                 if selection == address
-                  log.logWarn 'The selected text resolved to the \
+                  log.logWarn "The selected text resolved to the \
                     value of the selection, this probably means \
-                    an IP address is selected', range
+                    an IP address is selected", range
                 else
-                  log.logSuccess 'Successfully resolved #{selection} to \
-                    #{address} + (IPv#{family})', range
+                  log.logSuccess "Successfully resolved #{selection} to \
+                    #{address} (IPv#{family})", range
                   editor.setTextInBufferRange(range, address)
