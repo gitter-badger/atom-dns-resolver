@@ -4,7 +4,14 @@
   "version": "0.1.0",
   "description": "A small package allowing the resolution of Domain Names to IP Addresses.",
   "keywords": [
-    "atom", "dns", "resolve", "lookup", "fqdn", "ip-address", "ipv4", "ipv6"
+    "atom",
+    "dns",
+    "resolve",
+    "lookup",
+    "fqdn",
+    "ip-address",
+    "ipv4",
+    "ipv6"
   ],
   "activationCommands": {
     "atom-workspace": "atom-dns-resolver:resolve"
