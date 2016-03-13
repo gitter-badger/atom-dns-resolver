@@ -55,7 +55,7 @@ module.exports = AtomDnsResolver =
         log = @logger
         dns = @dns
         do (range) ->
-          selection = editor.getTextInBufferRange(range)
+          selection = editor.getTextInBufferRange(range).trim()
 
           if selection == ''
             log.logWarn 'Selection is empty, skipping.', range
