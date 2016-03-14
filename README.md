@@ -1,5 +1,7 @@
 # Atom DNS Resolver
 
+[![Join the chat at https://gitter.im/RichardSlater/atom-dns-resolver](https://badges.gitter.im/RichardSlater/atom-dns-resolver.svg)](https://gitter.im/RichardSlater/atom-dns-resolver?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![TravisCI](https://travis-ci.org/RichardSlater/atom-dns-resolver.svg?branch=master)](https://travis-ci.org/RichardSlater/atom-dns-resolver) [![AppVeyor](https://ci.appveyor.com/api/projects/status/m7fgyausf7bo2waf?svg=true)](https://ci.appveyor.com/project/richard-slater/atom-dns-resolver) [![Issue Count](https://codeclimate.com/github/RichardSlater/atom-dns-resolver/badges/issue_count.svg)](https://codeclimate.com/github/RichardSlater/atom-dns-resolver) [![Flattr Sign File MSBuild Task Repository](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=RichardSlater&url=http://github.com/RichardSlater/atom-dns-resolver&title=Atom%20Editor%20DNS%20Resolver&language=en_GB&tags=github&category=software)
 
 Allows any selected domain name, whether fully qualified or local to be resolved to an IPv4 or IPv6 address.
